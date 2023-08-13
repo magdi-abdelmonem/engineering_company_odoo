@@ -1,0 +1,48 @@
+<odoo>
+
+    <report
+            id="report_project"
+            model="projects"
+            string="Project Report"
+            name="engineering_company.report_project_view"
+            file="projects.report_projects"
+            report_type="qweb-pdf"/>
+
+    <template id="report_project_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 t-field='doc.name'/>
+
+                        <p>Government :
+                            <spam t-field="doc.governorate"/>
+                        </p>
+                        <p>Start Time From :
+                            <spam t-field="doc.start_date"/>
+                        </p>
+
+                        <p>The Deadline :
+                            <spam t-field="doc.deadline"/>
+                        </p>
+                        <p>Specialization :
+                            <spam t-field="doc.spec"/>
+                        </p>
+
+                        <p>Project Lifetime :
+                            <spam t-field="doc.project_lifetime"/>
+                        </p>
+                            <h3>Engineers Responsible For The Project :</h3>
+                            <ul>
+                                <t t-foreach="doc.engineers_res" t-as="eng">
+                                    <li>
+                                        <spam t-field="eng.name"/>
+                                    </li>
+                                </t>
+                            </ul>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

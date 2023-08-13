@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <!--    form -->
+
+    <record id="view_projects_form" model="ir.ui.view">
+        <field name="name">projects.form</field>
+        <field name="model">projects</field>
+        <field name="arch" type="xml">
+            <form >
+                <sheet>
+                    <group string="Data Of Project">
+                        <field name="name"/>
+                        <field name="governorate"/>
+                        <field name="start_date"/>
+                        <field name="deadline"/>
+                        <field name="project_lifetime"/>
+                        <field name="engineers_res"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!--    tree -->
+
+    <record id="view_projects_tree" model="ir.ui.view">
+        <field name="name">projects.tree</field>
+        <field name="model">projects</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="governorate"/>
+                <field name="start_date"/>
+                <field name="deadline"/>
+            </tree>
+        </field>
+    </record>
+
+<!--    calendar-->
+    <record id="view_projects_calendar" model="ir.ui.view">
+        <field name="name">projects.calendar</field>
+        <field name="model">projects</field>
+        <field name="arch" type="xml">
+            <calendar string="Projects Calendar" date_start="start_date" date_stop="deadline" >
+                <field name="name"/>
+            </calendar>
+        </field>
+    </record>
+
+
+     <!--    graph view -->
+
+    <record id="view_projects_graph" model="ir.ui.view">
+        <field name="name">projects.graph</field>
+        <field name="model">projects</field>
+        <field name="arch" type="xml">
+            <graph string="Participation by Projects ">
+                <field name="governorate"/>
+                <field name="engineers_res" type="'measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!--action-->
+
+    <record id="action_projects_list" model="ir.actions.act_window">
+        <field name="name">projects</field>
+        <field name="res_model">projects</field>
+        <field name="view_mode">tree,form,calendar,graph</field>
+    </record>
+
+
+    <!--    menu -->
+
+    <menuitem id="menu_company" name="The Company"/>
+
+    <menuitem id="menu_projects" name="The Projects"
+              parent="menu_company"/>
+
+    <menuitem id="menu_all_projects" name="All Projects" parent="menu_projects"
+              action="action_projects_list"/>
+
+
+</odoo>
