@@ -6,14 +6,19 @@ class ProjectsManagement(models.Model):
     _name = 'projects'
     _description = 'Projects Management'
     _inherit = 'mail.thread'
-    _inherit = 'engineers'
 
     name = fields.Char(string="Building", required=True,tracking=True)
-    governorate=fields.Char(string="Government", required=True,tracking=True)
-    engineers_res=fields.Many2many('engineers',string="Engineers Responsible For The Project",tracking=True)
+    governorate=fields.Selection([("cairo", "Cairo"),("alexandria", "Alexandria"),
+                                ("giza", "Giza"),("monufia", "Monufia"),("dakahlia", "Dakahlia")
+                                 ,("fayoum", "Fayoum"),("aswan", "Aswan"),("damietta", "Damietta"),
+                                ("qena", "Qena"),("sharqia", "Sharqia"),("sohag", "Sohag")]
+                                ,string="Government", required=True,tracking=True)
+    engineers_res=fields.Many2many('engineers',string="Engineers Responsible For this Project",tracking=True)
     start_date = fields.Date(string="Start Time", default=fields.datetime.today())
     deadline = fields.Date(string="The Deadline", default=fields.datetime.today())
     project_lifetime = fields.Char(string="Project Lifetime",compute="_compute_lifetime",tracking=True)
+
+    engineers_responsible_for_the_project = fields.Char(String = 'Engineers Responsible For The Project')
 
     _sql_constraints = [
 
@@ -30,11 +35,10 @@ class ProjectsManagement(models.Model):
             rec.project_lifetime= (str((rec.deadline.year - rec.start_date.year))) +' year '+'and ' + (str(abs(rec.deadline.month - rec.start_date.month))) +' month '
 
 
-    # @api.onchange("engineers_res")
-    # def _compute_engineers(self):
-    #     bb = self.engineers_res.search([])
-    #     self.eng_names = bb.mapped("gender")
 
-
+    def compute_eng_res_appear(self):
+        get_id=self.env['projects'].search([('id','=',self.id)])
+        get_ids=get_id.mapped('engineers_res.name')
+        self.engineers_responsible_for_the_project = get_ids
 
 

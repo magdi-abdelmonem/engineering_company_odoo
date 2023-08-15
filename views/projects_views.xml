@@ -8,8 +8,13 @@
         <field name="name">projects.form</field>
         <field name="model">projects</field>
         <field name="arch" type="xml">
-            <form >
+            <form>
                 <sheet>
+                    <div name="button_box" position="inside">
+                        <button name="compute_eng_res_appear" type="object" class="oe_stat_button"
+                                string="update responsible engineers">
+                        </button>
+                    </div>
                     <group string="Data Of Project">
                         <field name="name"/>
                         <field name="governorate"/>
@@ -18,6 +23,10 @@
                         <field name="project_lifetime"/>
                         <field name="engineers_res"/>
                     </group>
+
+                    <!--                    <group>-->
+                    <!--                        <button name="compute_eng_res_appear" type="object" string="print now"></button>-->
+                    <!--                    </group>-->
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids"/>
@@ -38,23 +47,25 @@
                 <field name="governorate"/>
                 <field name="start_date"/>
                 <field name="deadline"/>
+                <field name="engineers_responsible_for_the_project"/>
+
             </tree>
         </field>
     </record>
 
-<!--    calendar-->
+    <!--    calendar-->
     <record id="view_projects_calendar" model="ir.ui.view">
         <field name="name">projects.calendar</field>
         <field name="model">projects</field>
         <field name="arch" type="xml">
-            <calendar string="Projects Calendar" date_start="start_date" date_stop="deadline" >
+            <calendar string="Projects Calendar" date_start="start_date" date_stop="deadline">
                 <field name="name"/>
             </calendar>
         </field>
     </record>
 
 
-     <!--    graph view -->
+    <!--    graph view -->
 
     <record id="view_projects_graph" model="ir.ui.view">
         <field name="name">projects.graph</field>
