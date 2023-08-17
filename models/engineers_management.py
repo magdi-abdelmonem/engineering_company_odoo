@@ -10,6 +10,7 @@ class EngineersManagement(models.Model):
 
     name = fields.Char(string="Name", required=True,tracking=True)
     age = fields.Integer(string="Age", required=True,tracking=True)
+    personal_img=fields.Image(string="Personal image",tracking=True)
     gender = fields.Selection([("male", "Male"),("female", "Female")],string="Gender",tracking=True)
     date=fields.Date(string="Date Time", default=fields.datetime.today() ,readonly=True)
     spec = fields.Selection([("software  engineering", "Software engineering"),

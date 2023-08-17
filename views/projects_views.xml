@@ -9,12 +9,21 @@
         <field name="model">projects</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+
+                    <button name="start_project_action" type="object" string="Start the project"
+                            states="not_started"/>
+                    <button name="finish_project_action" type="object" string="Finish the project"
+                            states="in_progress"/>
+                    <button name="reset_project_action" type="object" string="Reset the project"
+                            states="finished,canceled"/>
+                    <button name="cancel_project_action" type="object" string="Cancel the project"
+                            states="not_started,in_progress"/>
+
+                    <field name="state" widget="statusbar" statusbar_visible="not_started,in_progress,finished"/>
+                </header>
+
                 <sheet>
-                    <div name="button_box" position="inside">
-                        <button name="compute_eng_res_appear" type="object" class="oe_stat_button"
-                                string="update responsible engineers">
-                        </button>
-                    </div>
                     <group string="Data Of Project">
                         <field name="name"/>
                         <field name="governorate"/>
@@ -23,10 +32,6 @@
                         <field name="project_lifetime"/>
                         <field name="engineers_res"/>
                     </group>
-
-                    <!--                    <group>-->
-                    <!--                        <button name="compute_eng_res_appear" type="object" string="print now"></button>-->
-                    <!--                    </group>-->
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids"/>
@@ -48,8 +53,35 @@
                 <field name="start_date"/>
                 <field name="deadline"/>
                 <field name="engineers_responsible_for_the_project"/>
-
+                <field name="state" decoration-success="state =='finished'"
+                       decoration-danger="state=='canceled'"
+                       decoration-info="state =='in_progress'"
+                       decoration-primary="state =='not_started'"
+                       widget="badge"/>
             </tree>
+        </field>
+    </record>
+
+
+
+        <!--    search-->
+    <record id="view_projects_search" model="ir.ui.view">
+        <field name="name">projects.search</field>
+        <field name="model">projects</field>
+        <field name="arch" type="xml">
+            <search string="Projects search">
+                <field name="name"/>
+                <field name="governorate"/>
+                <group>
+                <filter name="state" string="Projects not started" domain="[('state','=','not_started')]"/>
+                <filter name="state" string="Projects in_progress" domain="[('state','=','in_progress')]"/>
+                <filter name="state" string="Projects Finished" domain="[('state','=','finished')]"/>
+                <filter name="state" string="Projects Canceled" domain="[('state','=','canceled')]"/>
+                </group>
+                <group string='Group By'>
+                    <filter name="by_state" string="State of project" context="{'group_by':'state'}"/>
+                </group>
+            </search>
         </field>
     </record>
 

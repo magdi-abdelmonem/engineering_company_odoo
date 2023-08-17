@@ -20,6 +20,14 @@ class ProjectsManagement(models.Model):
 
     engineers_responsible_for_the_project = fields.Char(String = 'Engineers Responsible For The Project')
 
+    state = fields.Selection(
+        [
+            ('not_started', "Not_started"),
+            ('in_progress', "In_progress"),
+            ('finished', "Finished"),
+            ('canceled', "Canceled"),
+        ], string="Project state", readonly=True, copy=False, default='not_started', tracking=True)
+
     _sql_constraints = [
 
         ('name_description_check',
@@ -42,3 +50,31 @@ class ProjectsManagement(models.Model):
         self.engineers_responsible_for_the_project = get_ids
 
 
+
+    @api.model
+    def create(self, vals_list):
+        rec = super(ProjectsManagement, self).create(vals_list)
+        rec.compute_eng_res_appear()
+        return rec
+
+
+
+    # function for buttons in statusbar
+
+    def start_project_action(self):
+        for rec in self:
+            rec.state='in_progress'
+
+    def finish_project_action(self):
+        for rec in self:
+            rec.state='finished'
+
+
+    def reset_project_action(self):
+        for rec in self:
+            rec.state='not_started'
+
+
+    def cancel_project_action(self):
+        for rec in self:
+            rec.state='canceled'

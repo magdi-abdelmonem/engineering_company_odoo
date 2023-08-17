@@ -10,7 +10,8 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <group string="Information">
+                    <field name="personal_img" widget="image" class="oe_avatar"/>
+                    <group>
                         <field name="name"/>
                         <field name="age"/>
                         <field name="gender"/>
