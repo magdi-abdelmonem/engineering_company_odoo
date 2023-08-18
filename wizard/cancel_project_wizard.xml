@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<odoo>
+
+    <!--    wizard-->
+    <record id="cancel_wizard_form_view" model="ir.ui.view">
+        <field name="name">cancel.project.wizard.form</field>
+        <field name="model">cancel.project.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Cancel Project">
+                <group>
+                    <field name="project_id"/>
+                </group>
+                <footer>
+                    <button name="cancel" string="Cancel project" type="object" class="oe_highlight"
+                            data-hotkey="q"/>
+                    <button string="Discard" class="btn btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="cancel_project_wizard" model="ir.actions.act_window">
+        <field name="name">cancel project wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cancel.project.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
+    <menuitem id="menu_company" name="The Company"/>
+
+    <menuitem id="canceled_project_wizard" name="Cancel Project " parent="menu_company"/>
+
+    <menuitem id="menu_projects_wizard" name="Cancel Project" parent="canceled_project_wizard"
+              action="cancel_project_wizard"/>
+
+
+</odoo>

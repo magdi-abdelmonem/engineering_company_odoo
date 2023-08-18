@@ -12,14 +12,15 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','mail'],
+    'depends': ['base', 'mail'],
 
     # always loaded
     'data': [
         "security/ir.model.access.csv",
         'views/engineers_views.xml',
         'views/projects_views.xml',
-        'wizard/wizard.xml',
+        'wizard/cancel_project_wizard.xml',
+        'wizard/add_engineer_to_project.xml',
         'reports/engineers_report.xml',
         'reports/projects_report.xml',
     ],

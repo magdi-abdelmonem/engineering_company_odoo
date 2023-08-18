@@ -2,15 +2,15 @@
 
 
 <odoo>
-    <!--    wizard-->
-        <record id="wizard_form_view" model="ir.ui.view">
+
+        <record id="add_eng_wizard_form_view" model="ir.ui.view">
             <field name="name">projects.wizard.form</field>
             <field name="model">projects.wizard</field>
             <field name="arch" type="xml">
                     <form string="Add Engineers">
                         <group>
                           <field name="project_id"/>
-                          <field name="engineer_attendees"/>
+                          <field name="engineers_res"/>
                         </group>
                         <footer>
                     <button string="Confirm" name="confirm" type="object" class="oe_highlight"
@@ -22,7 +22,7 @@
     </record>
 
 
-    <record id="projects_wizard" model="ir.actions.act_window">
+    <record id="projectss_wizard" model="ir.actions.act_window">
         <field name="name">projects wizard</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">projects.wizard</field>
@@ -33,10 +33,10 @@
 
     <menuitem id="menu_company" name="The Company"/>
 
-    <menuitem id="project_wizard" name="Add Engineers For Projects " parent="menu_company"/>
+    <menuitem id="project_wizard" name="Add Engineers to Projects " parent="menu_company"/>
 
-    <menuitem id="menu_all_projects_wizard" name="Add Engineers" parent="project_wizard"
-              action="projects_wizard"/>
+    <menuitem id="menu_all_projects_wizard" name="Add engineers" parent="project_wizard"
+              action="projectss_wizard"/>
 
 
 </odoo>

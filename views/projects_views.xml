@@ -10,7 +10,6 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-
                     <button name="start_project_action" type="object" string="Start the project"
                             states="not_started"/>
                     <button name="finish_project_action" type="object" string="Finish the project"
@@ -48,11 +47,11 @@
         <field name="model">projects</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="id"/>
                 <field name="name"/>
                 <field name="governorate"/>
                 <field name="start_date"/>
                 <field name="deadline"/>
-                <field name="engineers_responsible_for_the_project"/>
                 <field name="state" decoration-success="state =='finished'"
                        decoration-danger="state=='canceled'"
                        decoration-info="state =='in_progress'"
