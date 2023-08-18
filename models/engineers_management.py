@@ -24,7 +24,8 @@ class EngineersManagement(models.Model):
 
     exp_years = fields.Integer(string="Experiance Years", required=True,tracking=True)
 
-
+    phone=fields.Char(string="Phone")
+    email=fields.Char(string="Email")
 '''
     # example for creation
     def creation(self):

@@ -2,6 +2,6 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 engineering_company.access_engineers,access_engineers,engineering_company.model_engineers,base.group_user,1,1,1,1
 engineering_company.access_projects,access_projects,engineering_company.model_projects,base.group_user,1,1,1,1
 
-engineering_compa,access.projects.wizard,model_projects_wizard,base.group_user,1,1,1,1
 
+engineering_compa,access.projects.wizard,model_projects_wizard,base.group_user,1,1,1,1
 engineering_company,access.cancel.project.wizard,model_cancel_project_wizard,base.group_user,1,1,1,1

@@ -47,7 +47,10 @@
         <field name="model">projects</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="id"/>
+                <header>
+                    <button name="start_project_action" type="object" string="Start the project"
+                        class="oe_highlight" states="not_started"/>
+                </header>
                 <field name="name"/>
                 <field name="governorate"/>
                 <field name="start_date"/>
@@ -123,7 +126,8 @@
     <menuitem id="menu_company" name="The Company"/>
 
     <menuitem id="menu_projects" name="The Projects"
-              parent="menu_company"/>
+              parent="menu_company"
+              sequence="1"/>
 
     <menuitem id="menu_all_projects" name="All Projects" parent="menu_projects"
               action="action_projects_list"/>

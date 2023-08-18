@@ -17,8 +17,8 @@
     # always loaded
     'data': [
         "security/ir.model.access.csv",
-        'views/engineers_views.xml',
         'views/projects_views.xml',
+        'views/engineers_views.xml',
         'wizard/cancel_project_wizard.xml',
         'wizard/add_engineer_to_project.xml',
         'reports/engineers_report.xml',
