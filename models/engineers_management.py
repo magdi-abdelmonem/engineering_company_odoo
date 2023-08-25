@@ -8,7 +8,7 @@ class EngineersManagement(models.Model):
     _description = 'Engineers Management'
 
 
-    name = fields.Char(string="Name", required=True,tracking=True)
+    name = fields.Char(string="Name", required=True,tracking=True,trim=True)
     age = fields.Integer(string="Age", required=True,tracking=True)
     personal_img=fields.Image(string="Personal image",tracking=True)
     gender = fields.Selection([("male", "Male"),("female", "Female")],string="Gender",tracking=True)

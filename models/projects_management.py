@@ -36,6 +36,10 @@ class ProjectsManagement(models.Model):
         ('name_uniq', 'unique (name)', "Tag name already exists !")
     ]
 
+    # button that print report
+    def print_report(self):
+        return self.env.ref('engineering_company.report_project').report_action(self)
+
 
 
     @api.depends("start_date","deadline")
@@ -72,3 +76,6 @@ class ProjectsManagement(models.Model):
     def cancel_project_action(self):
         for rec in self:
             rec.state='canceled'
+
+
+

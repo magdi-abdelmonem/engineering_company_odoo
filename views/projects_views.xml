@@ -21,14 +21,25 @@
 
                     <field name="state" widget="statusbar" statusbar_visible="not_started,in_progress,finished"/>
                 </header>
-
+                <header>
+                    <header>
+                    <button name="print_report" string="Print Project Report" type="object" states="finished,canceled" class="oe_highlight"
+                            groups="base.group_user" data-hotkey="k"/>
+                </header>
+                </header>
                 <sheet>
-                    <group string="Data Of Project">
-                        <field name="name"/>
-                        <field name="governorate"/>
-                        <field name="start_date"/>
-                        <field name="deadline"/>
-                        <field name="project_lifetime"/>
+                    <group>
+                        <group string="Data Of Project">
+                            <field name="name"/>
+                            <field name="governorate"/>
+                            <field name="start_date"/>
+                            <field name="deadline"/>
+                            <field name="project_lifetime"/>
+                        </group>
+                    </group>
+                </sheet>
+                <sheet>
+                    <group string="Add engineers to the projects">
                         <field name="engineers_res"/>
                     </group>
                 </sheet>
@@ -49,7 +60,7 @@
             <tree>
                 <header>
                     <button name="start_project_action" type="object" string="Start the project"
-                        class="oe_highlight" states="not_started"/>
+                            class="oe_highlight" states="not_started"/>
                 </header>
                 <field name="name"/>
                 <field name="governorate"/>
@@ -65,8 +76,7 @@
     </record>
 
 
-
-        <!--    search-->
+    <!--    search-->
     <record id="view_projects_search" model="ir.ui.view">
         <field name="name">projects.search</field>
         <field name="model">projects</field>
@@ -75,10 +85,10 @@
                 <field name="name"/>
                 <field name="governorate"/>
                 <group>
-                <filter name="state" string="Projects not started" domain="[('state','=','not_started')]"/>
-                <filter name="state" string="Projects in_progress" domain="[('state','=','in_progress')]"/>
-                <filter name="state" string="Projects Finished" domain="[('state','=','finished')]"/>
-                <filter name="state" string="Projects Canceled" domain="[('state','=','canceled')]"/>
+                    <filter name="state" string="Projects not started" domain="[('state','=','not_started')]"/>
+                    <filter name="state" string="Projects in_progress" domain="[('state','=','in_progress')]"/>
+                    <filter name="state" string="Projects Finished" domain="[('state','=','finished')]"/>
+                    <filter name="state" string="Projects Canceled" domain="[('state','=','canceled')]"/>
                 </group>
                 <group string='Group By'>
                     <filter name="by_state" string="State of project" context="{'group_by':'state'}"/>

@@ -14,6 +14,8 @@
                 <t t-call="web.external_layout">
                     <div class="page">
                         <h2 t-field='doc.name'/>
+                        <img class="img" src="/engineering_company/static/description/icon.png"
+                             style="height:45%;width:100%;"/>
                         <p>Age :
                             <spam t-field="doc.age"/>
                         </p>
@@ -30,6 +32,12 @@
 
                         <p>Experiance Years :
                             <spam t-field="doc.exp_years"/>
+                        </p>
+                        <p>Phone number :
+                            <spam t-field="doc.phone"/>
+                        </p>
+                        <p>Email :
+                            <spam t-field="doc.email"/>
                         </p>
 
                     </div>

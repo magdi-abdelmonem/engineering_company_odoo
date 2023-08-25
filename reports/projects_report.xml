@@ -25,12 +25,12 @@
                         <p>The Deadline :
                             <spam t-field="doc.deadline"/>
                         </p>
-                        <p>Specialization :
-                            <spam t-field="doc.spec"/>
-                        </p>
 
                         <p>Project Lifetime :
                             <spam t-field="doc.project_lifetime"/>
+                        </p>
+                        <p>State of the project :
+                            <spam t-field="doc.state"/>
                         </p>
                             <h3>Engineers Responsible For The Project :</h3>
                             <ul>
