@@ -13,6 +13,7 @@
                     <field name="personal_img" widget="image" class="oe_avatar"/>
                     <group>
                         <group>
+                            <field name="reference"/>
                             <field name="name"/>
                             <field name="age"/>
                             <field name="gender"/>
@@ -43,6 +44,7 @@
         <field name="model">engineers</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="reference"/>
                 <field name="name"/>
                 <field name="spec"/>
                 <field name="phone" widget="phone"/>

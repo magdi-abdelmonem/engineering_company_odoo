@@ -23,6 +23,7 @@
         'wizard/add_engineer_to_project.xml',
         'reports/engineers_report.xml',
         'reports/projects_report.xml',
+        'data/eng_sequence.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
