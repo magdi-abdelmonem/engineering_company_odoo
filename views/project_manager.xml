@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <!--    form -->
+
+    <record id="view_managers_form" model="ir.ui.view">
+        <field name="name">project.manager.form</field>
+        <field name="model">project.manager</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="personal_img" widget="image" class="oe_avatar"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="age"/>
+                            <field name="gender"/>
+                            <field name="spec"/>
+                            <field name="exp_years"/>
+                            <field name="certification"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Other Information" name="other_information">
+                            <field name="address" widget="address"/>
+                            <field name="phone" widget="phone"/>
+                            <field name="email" widget="email"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!--    tree -->
+
+    <record id="view_manager_tree" model="ir.ui.view">
+        <field name="name">project.manager.tree</field>
+        <field name="model">project.manager</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="spec"/>
+                <field name="exp_years"/>
+                <field name="phone" widget="phone"/>
+                <field name="email" widget="email"/>
+
+            </tree>
+        </field>
+    </record>
+
+
+
+          <!--    search-->
+<!--    <record id="view_engineers_search" model="ir.ui.view">-->
+<!--        <field name="name">engineers.search</field>-->
+<!--        <field name="model">engineers</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <search string="Engineers search">-->
+<!--                <field name="name"/>-->
+<!--                <field name="spec"/>-->
+<!--                <field name="exp_years"/>-->
+<!--                <field name="phone"/>-->
+<!--                <field name="email"/>-->
+
+<!--                <group>-->
+<!--                    <filter name="exp_years" string="Junior engineers" domain="[('exp_years','&lt;',3)]"/>-->
+<!--                    <filter name="exp_years" string="Senior engineers" domain="[('exp_years','&gt;',3)]"/>-->
+
+<!--                </group>-->
+
+<!--                <group string='Group By'>-->
+<!--                    <filter name="by_experiance" string="State of experiance" context="{'group_by':'exp_years'}"/>-->
+<!--                </group>-->
+
+<!--            </search>-->
+<!--        </field>-->
+<!--    </record>-->
+
+
+
+<!--        &lt;!&ndash;    graph view &ndash;&gt;-->
+
+<!--    <record id="view_engineers_graph" model="ir.ui.view">-->
+<!--        <field name="name">engineers.graph</field>-->
+<!--        <field name="model">engineers</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <graph string="Participation by engineers ">-->
+<!--                <field name="name"/>-->
+<!--                <field name="exp_years" type="'measure"/>-->
+<!--            </graph>-->
+<!--        </field>-->
+<!--    </record>-->
+
+
+
+
+<!--         &lt;!&ndash;    pivot view &ndash;&gt;-->
+
+<!--    <record id="view_engineers_pivot" model="ir.ui.view">-->
+<!--        <field name="name">engineers.pivot</field>-->
+<!--        <field name="model">engineers</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <graph string="Participation by engineers ">-->
+<!--                <field name="name"/>-->
+<!--                <field name="exp_years" type="'measure"/>-->
+<!--            </graph>-->
+<!--        </field>-->
+<!--    </record>-->
+
+
+    <!--action-->
+
+    <record id="action_managers_list" model="ir.actions.act_window">
+        <field name="name">managers</field>
+        <field name="res_model">project.manager</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!--    menu -->
+
+    <menuitem id="menu_company" name="The Company"/>
+
+    <menuitem id="menu_managers" name="The Managers"
+              parent="menu_company"/>
+
+    <menuitem id="menu_all_managers" name="All Projects Managers" parent="menu_managers"
+              action="action_managers_list"/>
+
+</odoo>

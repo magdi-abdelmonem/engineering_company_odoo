@@ -14,6 +14,7 @@ class ProjectsManagement(models.Model):
                                 ("qena", "Qena"),("sharqia", "Sharqia"),("sohag", "Sohag")]
                                 ,string="Government", required=True,tracking=True)
     engineers_res=fields.Many2many('engineers',string="Engineers Responsible For this Project",tracking=True)
+    project_manager=fields.Many2one("project.manager",string="The Manager Of Project",tracking=True)
     start_date = fields.Date(string="Start Time", default=fields.datetime.today())
     deadline = fields.Date(string="The Deadline", default=fields.datetime.today())
     project_lifetime = fields.Char(string="Project Lifetime",compute="_compute_lifetime",tracking=True)
@@ -26,6 +27,8 @@ class ProjectsManagement(models.Model):
             ('finished', "Finished"),
             ('canceled', "Canceled"),
         ], string="Project state", readonly=True, copy=False, default='not_started', tracking=True)
+
+    canceled_reason=fields.Text(string="Reasons for canceling the project")
 
     _sql_constraints = [
 

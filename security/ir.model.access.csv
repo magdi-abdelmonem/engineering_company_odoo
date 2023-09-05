@@ -5,3 +5,5 @@ engineering_company.access_projects,access_projects,engineering_company.model_pr
 
 engineering_compa,access.projects.wizard,model_projects_wizard,base.group_user,1,1,1,1
 engineering_company,access.cancel.project.wizard,model_cancel_project_wizard,base.group_user,1,1,1,1
+
+project_manager_company,access_project_manager,model_project_manager,base.group_user,1,1,1,1

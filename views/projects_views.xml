@@ -23,25 +23,32 @@
                 </header>
                 <header>
                     <header>
-                    <button name="print_report" string="Print Project Report" type="object" states="finished,canceled" class="oe_highlight"
-                            groups="base.group_user" data-hotkey="k"/>
-                </header>
+                        <button name="print_report" string="Print Project Report" type="object"
+                                states="finished,canceled" class="oe_highlight"
+                                groups="base.group_user" data-hotkey="k"/>
+                    </header>
                 </header>
                 <sheet>
                     <group>
+
                         <group string="Data Of Project">
                             <field name="name"/>
                             <field name="governorate"/>
-                            <field name="start_date"/>
-                            <field name="deadline"/>
-                            <field name="project_lifetime"/>
+                            <field name="start_date" attrs="{'invisible': [('state','=','canceled')]}"/>
+                            <field name="deadline" attrs="{'invisible': [('state','=','canceled')]}"/>
+                            <field name="project_lifetime" attrs="{'invisible': [('state','=','canceled')]}"/>
+                        </group>
+                        <group>
+                            <field name="canceled_reason" attrs="{'invisible': [('state','!=','canceled')]}"/>
                         </group>
                     </group>
                 </sheet>
                 <sheet>
                     <group string="Add engineers to the projects">
-                        <field name="engineers_res" />
+                        <field name="project_manager"/>
+                        <field name="engineers_res"/>
                     </group>
+
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids"/>
@@ -64,13 +71,15 @@
                 </header>
                 <field name="name"/>
                 <field name="governorate"/>
+                <field name="project_manager" widget="many2one_tags"/>
                 <field name="engineers_res" widget="many2many_tags"/>
-                <field name="start_date"/>
-                <field name="deadline"/>
-                <field name="state" decoration-success="state =='finished'"
-                       decoration-danger="state=='canceled'"
-                       decoration-info="state =='in_progress'"
-                       decoration-primary="state =='not_started'"
+                <field name="canceled_reason" attrs="{'invisible':[('state','!=','canceled')]}"/>
+                <field name="start_date" attrs="{'invisible':[('state','=','canceled')]}"/>
+                <field name="deadline" attrs="{'invisible':[('state','=','canceled')]}"/>
+                <field name="state" decoration-success="state == 'finished'"
+                       decoration-danger="state == 'canceled'"
+                       decoration-info="state == 'in_progress'"
+                       decoration-primary="state == 'not_started'"
                        widget="badge"/>
             </tree>
         </field>

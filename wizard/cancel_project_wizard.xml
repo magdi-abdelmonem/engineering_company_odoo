@@ -11,6 +11,7 @@
             <form string="Cancel Project">
                 <group>
                     <field name="project_id"/>
+                    <field name="canceled_reason"/>
                 </group>
                 <footer>
                     <button name="cancel" string="Cancel project" type="object" class="oe_highlight"
@@ -33,9 +34,11 @@
 
     <menuitem id="menu_company" name="The Company"/>
 
-    <menuitem id="canceled_project_wizard" name="Cancel Project " parent="menu_company"/>
+    <menuitem id="menu_projects" name="The Projects"
+              parent="menu_company"
+              sequence="1"/>
 
-    <menuitem id="menu_projects_wizard" name="Cancel Project" parent="canceled_project_wizard"
+    <menuitem id="menu_projects_wizard" name="Cancel Project" parent="menu_projects"
               action="cancel_project_wizard"/>
 
 

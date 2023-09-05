@@ -19,6 +19,7 @@
         "security/ir.model.access.csv",
         'views/projects_views.xml',
         'views/engineers_views.xml',
+        'views/project_manager.xml',
         'wizard/cancel_project_wizard.xml',
         'wizard/add_engineer_to_project.xml',
         'reports/engineers_report.xml',
