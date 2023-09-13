@@ -17,7 +17,7 @@ class ProjectsManagement(models.Model):
     engineers_res=fields.Many2many('engineers',string="Engineers Responsible For this Project",tracking=True)
     project_manager=fields.Many2one("project.manager",string="The Manager Of Project",tracking=True)
     start_date = fields.Date(string="Start Time", default=fields.datetime.today())
-    deadline = fields.Date(string="The Deadline", default=fields.datetime.today())
+    deadline = fields.Date(string="The Deadline", default=fields.datetime.today()+ timedelta(days=90))
     project_lifetime = fields.Char(string="Project Lifetime",compute="_compute_lifetime",tracking=True)
 
     state = fields.Selection(
@@ -50,13 +50,6 @@ class ProjectsManagement(models.Model):
         for rec in self:
             rec.project_lifetime= (str((rec.deadline.year - rec.start_date.year))) +' year '+'and ' + (str(abs(rec.deadline.month - rec.start_date.month))) +' month '
 
-
-
-    @api.model
-    def create(self, vals_list):
-        rec = super(ProjectsManagement, self).create(vals_list)
-        rec.compute_eng_res_appear()
-        return rec
 
 
     def unlink(self):
