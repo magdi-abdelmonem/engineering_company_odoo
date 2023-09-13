@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 from datetime import date,datetime,timedelta
 
 class ProjectsManagement(models.Model):
@@ -19,7 +20,6 @@ class ProjectsManagement(models.Model):
     deadline = fields.Date(string="The Deadline", default=fields.datetime.today())
     project_lifetime = fields.Char(string="Project Lifetime",compute="_compute_lifetime",tracking=True)
 
-    engineers_responsible_for_the_project = fields.Text(String = 'Engineers Responsible For The Project',)
     state = fields.Selection(
         [
             ('not_started', "Not_started"),
@@ -59,6 +59,11 @@ class ProjectsManagement(models.Model):
         return rec
 
 
+    def unlink(self):
+        for rec in self:
+            if rec.state == "in_progress" :
+                raise ValidationError("cannot delete project during progress")
+            return super (ProjectsManagement,self).unlink()
 
     # function for buttons in statusbar
 

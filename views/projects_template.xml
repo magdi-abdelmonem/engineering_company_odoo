@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <template id="company_projects" name="Company Projects">
+
+        <t t-call="website.layout">
+            <div class="container">
+                <br/>
+                <center>
+                    <p>THE Company Projects .....</p>
+                </center>
+
+                <t t-set="title">Company Projects</t>
+
+                <table class="table-striped table">
+                    <thead style="font-size:23px;">
+                        <tr>
+                            <h>
+                                <td>Building</td>
+                                <td>Government</td>
+                                <td>Engineers Responsible For this Project</td>
+                                <td>The Manager Of Project</td>
+                                <td>Start Time</td>
+                                <td>The Deadline</td>
+                                <td>Project state</td>
+                            </h>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="projects" t-as="proj">
+                            <tr>
+                                <td>
+                                    <span t-esc='proj.name'/>
+                                </td>
+                                <td>
+                                    <span t-esc='proj.governorate'/>
+                                </td>
+                                <td>
+                                    <t t-foreach="proj.engineers_res" t-as="eng">
+                                        <h>"ENG"</h>
+                                        <span t-esc='eng.name'/>
+                                        <h>"//"</h>
+                                    </t>
+                                </td>
+                                <td>
+                                    <span t-esc='proj.project_manager.name'/>
+                                </td>
+                                <td>
+                                    <span t-esc='proj.start_date'/>
+                                </td>
+                                <td>
+                                    <span t-esc='proj.deadline'/>
+                                </td>
+                                <td>
+                                    <span t-esc='proj.state'/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+</odoo>

@@ -26,6 +26,7 @@
                         <group string="Other Information" name="other_information">
                             <field name="phone" widget="phone"/>
                             <field name="email" widget="email"/>
+                            <field name="color" />
                         </group>
                     </group>
                 </sheet>

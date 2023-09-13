@@ -12,7 +12,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'mail'],
+    'depends': ['base', 'mail','website'],
 
     # always loaded
     'data': [
@@ -20,6 +20,7 @@
         'views/projects_views.xml',
         'views/engineers_views.xml',
         'views/project_manager.xml',
+        'views/projects_template.xml',
         'wizard/cancel_project_wizard.xml',
         'wizard/add_engineer_to_project.xml',
         'reports/engineers_report.xml',
