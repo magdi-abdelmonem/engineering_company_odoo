@@ -23,7 +23,29 @@ class Projects(http.Controller):
         data = {"status": 200, "response": projects, "message": "SUCCESS"}
         return data
 
-#create new record using rest api
+
+    # function that get one record using id from api
+
+    @http.route("/engineering_company/get_one_project", type="json", auth="user")
+    def get_one_project(self, **params):
+        if params["id"]:
+            get_one_project = http.request.env['projects'].search([("id", "=", params["id"])])
+            project_details = []
+            vals = {
+                "id": get_one_project.id,
+                "name": get_one_project.name,
+                "Government": get_one_project.governorate,
+                "Engineers Responsible For this Project": get_one_project.engineers_res.mapped('name'),
+                "The Manager Of Project": get_one_project.project_manager.name,
+                "Start Time": get_one_project.start_date,
+                "The Deadline": get_one_project.deadline,
+                "Project state": get_one_project.state,
+            }
+            project_details.append(vals)
+            data = {"status": 200, "response": project_details, "message": "SUCCESS"}
+            return data
+
+    #create new record using rest api
 
     @http.route("/engineering_company/create_project", type="json", auth="user")
     def create_projects(self,**params):
