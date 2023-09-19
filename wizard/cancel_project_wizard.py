@@ -7,7 +7,7 @@ class CancelProjectWizard(models.TransientModel):
     _description = 'Cancel Project Wizard'
 
     project_id=fields.Many2one('projects' ,string='project cancel')
-    canceled_reason=fields.Text(string="Reasons for canceling the project")
+    canceled_reason=fields.Text(string="Reasons for canceling the project",required=True)
 
 
     def cancel(self):

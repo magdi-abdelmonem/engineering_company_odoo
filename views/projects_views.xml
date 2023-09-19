@@ -39,7 +39,8 @@
                             <field name="project_lifetime" attrs="{'invisible': [('state','=','canceled')]}"/>
                         </group>
                         <group>
-                            <field name="canceled_reason" attrs="{'invisible': [('state','!=','canceled')]}"/>
+                            <field name="canceled_reason" attrs="{'invisible':[('state','!=','canceled')]
+                                                                ,'required':[('state','=','canceled')]}"/>
                         </group>
                     </group>
                 </sheet>

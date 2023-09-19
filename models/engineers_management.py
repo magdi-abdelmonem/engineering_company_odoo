@@ -37,28 +37,8 @@ class EngineersManagement(models.Model):
         if vals.get('reference', _('New')) == _('New'):
             vals['reference'] = self.env['ir.sequence'].next_by_code('sequence.engineer') or _('New')
             return super(EngineersManagement, self).create(vals)
-'''
-    # example for creation
-    def creation(self):
-        self.env['engineers'].create([{
-            'name':"foad ",
-            'age':48,
-            'spec':"communications engineering",
-            'exp_years':26,
-        }, {
-                   'name': "smsm daly",
-                   'age': 33,
-                   'spec': "civil engineering",
-                   'exp_years': 9,
-               }])
-  '''
 
-'''
-    #example for search 
-    def print_record(self):
-        filter= self.env['engineers'].search([('gender','=','female')])
-        for rec in filter:
-            rec.spec="architecture engineering"
-'''
+
+
 
 
