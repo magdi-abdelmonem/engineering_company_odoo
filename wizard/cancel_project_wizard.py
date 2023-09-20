@@ -11,6 +11,5 @@ class CancelProjectWizard(models.TransientModel):
 
 
     def cancel(self):
-
         get_ids=int(self.project_id)
         return self.env['projects'].browse(get_ids).write({'state':'canceled','canceled_reason':self.canceled_reason})
